@@ -1,0 +1,896 @@
+{namespace f=Neos\FluidAdaptor\ViewHelpers}
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="description" content="" />
+	<meta name="Generator" content="Drupal 9 (https://www.drupal.org)" />
+	<meta name="MobileOptimized" content="width" />
+	<meta name="HandheldFriendly" content="true" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<meta http-equiv="x-ua-compatible" content="ie=edge" />
+	<link rel="icon" href="https://www.skynettechnologies.com/sites/default/files/favicon_0.webp" type="image/png" />
+	<link rel="stylesheet" href="Resources/Public/Styles/skynetaccessibilityscanner.css">
+	<title>Scanning & Monitoring Dashboard</title>
+</head>
+<body class="layout-no-sidebars has-featured-top page-node-1860 path-node node--type-page scrolled scrolldown">
+<!-- Global Loader -->
+<div id="page-loader" class="page-loader">
+	<div class="loader-box">
+		<div class="spinner"></div>
+		<p>Loading scanner data…</p>
+	</div>
+</div>
+<!-- Section 1 -->
+<div id="section1">
+	<div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
+		<div id="page-wrapper">
+			<div id="page">
+				<div id="main-wrapper" class="layout-main-wrapper clearfix">
+					<div id="main" class="container">
+						<div class="row row-offcanvas row-offcanvas-left clearfix">
+							<main class="main-content col" id="content" role="main">
+								<section class="section">
+									<div id="main-content" tabindex="-1"></div>
+									<div id="block-skynettechnologies-content" class="block block-system block-system-main-block">
+										<div class="content">
+											<article data-history-node-id="529" class="node node--type-page node--view-mode-full clearfix">
+												<div class="node__content clearfix">
+													<div class="scanning-monitoring-app">
+														<div class="scans">
+															<p class="title">My Scans</p>
+
+															<!-- Status Section -->
+															<section class="status">
+																<div class="page-background"></div>
+
+																<div class="status-card">
+																	<span class="status-title">Scan Score</span>
+																	<span class="status-value status-progress" id="scan-score" style="cursor:pointer;" onclick="showDetails()">
+																		0%
+																		<div class="progress-bar">
+																			<div class="progress-fill" style="width: 0%;"></div>
+																		</div>
+																		<div class="violations">
+																			Violations: <span class="status-value" style="font-size: 15px;">0</span>
+																		</div>
+																	</span>
+																</div>
+
+																<div class="status-card">
+																	<span class="status-title">Last Scanned</span>
+																	<span class="status-value status-inactive" id="last-scanned">
+																		<img src="Resources/Public/Images/not-shared.svg" alt="" title="Not Started">
+																		Not Started
+																	</span>
+																</div>
+															</section>
+
+															<hr class="divider">
+															<!-- Plan Section -->
+															<section class="plan">
+																<div class="page-background"></div>
+																<div class="plan-info">
+																	<div class="plans-left">
+																		<span class="plan-type free">
+																			<div class="icon-circle">
+																				<img src="Resources/Public/Images/round.svg" alt="" height="20" width="20">
+																			</div>
+																			<span id="plan-name">Free Plan</span>
+																			<span class="plan-desc">
+																				<ul>
+																					<li id="plan-pages">Scan up to 25 Pages</li>
+																				</ul>
+																			</span>
+																			<span class="plan-badge" id="plan-badge" style="color: green; background: #D1FFD3;">
+																				Current Plan
+																			</span>
+																		</span>
+																	</div>
+																	<div class="plans-right">
+																		<span class="plan-renewal" id="plan-renewal">
+																			<!-- Renewal/Expiry date will be populated here -->
+																		</span>
+																		<button class="cancel-btn" id="cancel-subscription-btn" onclick="handleDashboardLink()">
+																			Cancel Subscription
+																		</button>
+																	</div>
+																</div>
+															</section>
+
+															<!-- Pricing Section -->
+															<section class="pricing">
+																<div class="page-background"></div>
+																<div class="billing-toggle">
+																	<span class="label active" id="monthly-label">Pay Monthly</span>
+																	<label class="switch">
+																		<input type="checkbox" id="billing-toggle">
+																		<span class="slider"></span>
+																	</label>
+																	<span class="label" id="annual-label">Pay Annually</span>
+																	<span class="save">Save 20%</span>
+																</div>
+
+																<!-- Monthly Plans -->
+																<div id="monthlyclass" class="monthlyclass">
+																	<div class="pricing-tiers" id="monthly-plans">
+																		<!-- Plans will be dynamically inserted here -->
+																	</div>
+																</div>
+
+																<!-- Annual Plans -->
+																<div id="annualclass" class="annualclass">
+																	<div class="pricing-tiers" id="annual-plans">
+																		<!-- Plans will be dynamically inserted here -->
+																	</div>
+																</div>
+
+																<p class="pricing-contact">
+																	Are you looking for a custom plan or Enterprise plan? Contact us
+																	<a href="mailto:hello@skynettechnologies.com">hello@skynettechnologies.com</a>
+																</p>
+															</section>
+
+															<hr class="divider">
+
+															<!-- Help Section -->
+															<section class="help">
+																<p class="help-text">
+																	<strong>Facing any issues with SkynetAccessibility Scanner?</strong>
+																	Report a problem, we will get back to you very soon!
+																</p>
+																<a href="https://www.skynettechnologies.com/report-accessibility-problem" class="help-btn" target="_blank" rel="noopener noreferrer">Report a problem</a>
+															</section>
+														</div>
+													</div>
+												</div>
+											</article>
+										</div>
+									</div>
+								</section>
+							</main>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- End Section 1 -->
+<!-- Section 2 - Violation Report -->
+<div id="section2" style="display:none;">
+	<div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
+		<div id="page-wrapper">
+			<div id="page">
+				<div id="main-wrapper" class="layout-main-wrapper clearfix">
+					<div id="main" class="container">
+						<div class="row row-offcanvas row-offcanvas-left clearfix">
+							<main class="main-content col" id="content" role="main">
+								<section class="section">
+									<div id="main-content" tabindex="-1"></div>
+									<div id="block-skynettechnologies-content" class="block block-system block-system-main-block">
+										<div class="content">
+											<article data-history-node-id="529" class="node node--type-page node--view-mode-full clearfix">
+												<div class="node__content clearfix">
+													<div class="scanning-monitoring-app">
+														<div class="accessibility-report">
+															<div class="report-date">
+																<label for="report-date">Report Date:</label>
+																<select id="report-date">
+																	<option selected id="report-date-value">Select Date</option>
+																</select>
+															</div>
+
+															<section class="top-section">
+																<div class="card score-card">
+																	<h3>Accessibility Score</h3>
+																	<div class="accessibility-score">
+																		<div class="score-value" id="accessibility-score">0%</div>
+																		<span class="status-text not-compliant" id="compliance-status">Not Compliant</span>
+																	</div>
+																	<div class="progress-bar">
+																		<div class="progress-fill" id="accessibility-progress" style="width: 0%;"></div>
+																	</div>
+																	<p class="note">
+																		Automated Accessibility score has limitations.
+																		We recommend Manual Accessibility Audit.
+																	</p>
+																</div>
+
+																<!-- Web Pages Scanned -->
+																<div class="card pages-card">
+																	<h3>Web Pages Scanned</h3>
+																	<div class="pages-value" id="pages-scanned">0</div>
+																	<div class="progress-bar">
+																		<div class="progress-fill" id="pages-progress" style="width: 0%;"></div>
+																	</div>
+																	<p class="note" id="pages-note">
+																		0 pages scanned out of 0
+																	</p>
+																</div>
+															</section>
+
+															<!-- WCAG Section -->
+															<section class="wcag-section">
+																<div class="wcag-header">
+																	<h3>WCAG 2.1/2.2</h3>
+																	<button onclick="handleViolationLink()" class="view-btn">
+																		View all Violations
+																		<svg xmlns="http://www.w3.org/2000/svg" width="6" height="10" viewBox="0 0 6 10" fill="none">
+																			<path d="M6 5.00002C6 5.17924 5.92797 5.35843 5.78422 5.49507L1.25832 9.79486C0.970413 10.0684 0.503627 10.0684 0.21584 9.79486C-0.0719468 9.52145 -0.0719468 9.07807 0.21584 8.80452L4.22061 5.00002L0.21598 1.19549C-0.0718073 0.921968 -0.0718073 0.478632 0.21598 0.205242C0.503767 -0.0684128 0.970553 -0.0684128 1.25846 0.205242L5.78436 4.50496C5.92814 4.64166 6 4.82086 6 5.00002Z" fill="white" />
+																		</svg>
+																	</button>
+																</div>
+
+																<!-- Checks Grid -->
+																<div class="checks-grid">
+																	<div class="check-card failed">
+																		<span class="check-value" id="failed-checks">0</span>
+																		<span class="check-label">Failed Checks</span>
+																	</div>
+
+																	<div class="check-card passed">
+																		<span class="check-value" id="passed-checks">0</span>
+																		<span class="check-label">Passed Checks</span>
+																	</div>
+
+																	<div class="check-card na">
+																		<span class="check-value" id="na-checks">0</span>
+																		<span class="check-label">N/A Checks</span>
+																	</div>
+																</div>
+
+																<hr class="divider">
+
+																<!-- Violations Grid -->
+																<div class="violations-grid">
+																	<div class="violation-card">
+																		<span class="violation-title">Level A</span>
+																		<span class="violation-count">
+																			<span id="level-a-violations">0</span> violations
+																		</span>
+																	</div>
+
+																	<div class="violation-card">
+																		<span class="violation-title">Level AA</span>
+																		<span class="violation-count">
+																			<span id="level-aa-violations">0</span> violations
+																		</span>
+																	</div>
+
+																	<div class="violation-card">
+																		<span class="violation-title">Level AAA</span>
+																		<span class="violation-count">
+																			<span id="level-aaa-violations">0</span> violations
+																		</span>
+																	</div>
+																</div>
+															</section>
+															<br>
+															<button class="back-btn" onclick="goBack()">Back</button>
+														</div>
+													</div>
+												</div>
+											</article>
+										</div>
+									</div>
+								</section>
+							</main>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- End Section 2 -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+	window.NEOS_ADMIN = {
+		name: document.querySelector('meta[name="neos-user-name"]')?.content || '',
+		email: '{adminEmail -> f:format.raw()}'
+	};
+</script>
+<script>
+	// Global data object to store API responses
+	var appData = {
+		websiteId: '',
+		packageId: '',
+		subscrInterval: '',
+		paypalSubscrId: '',
+		dashboardLink: '',
+		violationLink: '',
+		endDate: '',
+		cancelDate: '',
+		isExpired: false,
+		plans: []
+	};
+
+	// Get URL parameter
+	function getUrlParameter(name) {
+		var urlParams = new URLSearchParams(window.location.search);
+		return urlParams.get(name);
+	}
+
+	function showLoader() {
+		document.getElementById('page-loader')?.classList.remove('hidden');
+	}
+
+	function hideLoader() {
+		document.getElementById('page-loader')?.classList.add('hidden');
+	}
+
+	// Initialize the application
+	function initializeApp() {
+		showLoader(); // 👈 SHOW loader immediately
+		// var url = getUrlParameter('url');
+		var url = window.location.hostname;
+		if (!url) {
+			console.error('No URL parameter provided');
+			hideLoader();
+			return;
+		}
+		// Register domain
+		registerDomain(url).then(function() {
+			// Fetch scan details
+			return fetchScanDetails(url);
+		}).then(function() {
+			// Fetch scan count
+			return fetchScanCount(url);
+		}).then(function() {
+			// Fetch packages
+			return fetchPackages(url);
+		}).then(function() {
+			// Render the UI
+			renderUI();
+			hideLoader(); // 👈 HIDE loader when everything is ready
+		}).catch(function(error) {
+			console.error('Error initializing app:', error);
+			hideLoader(); // 👈 ALWAYS hide on error
+		});
+	}
+
+	// Register domain
+	function registerDomain(url) {
+		var adminName = window.NEOS_ADMIN?.name || url;
+		var adminEmail = window.NEOS_ADMIN?.email || (url + '@mailinator.com');
+		console.log('Admin:', adminName, adminEmail);
+		var formData = new URLSearchParams({
+			'website': btoa(url),
+			'platform': 'Neos',
+			'is_trial_period': '1',
+			'name': adminName,
+			'email': adminEmail,
+			'comapany_name': url,
+			'package_type': '25-pages'
+		});
+
+		console.log(formData);
+
+		return fetch('https://skynetaccessibilityscan.com/api/register-domain-platform', {
+			method: 'POST',
+			body: formData
+		}).then(function(response) {
+			return response.json();
+		});
+	}
+
+	// Fetch scan details
+	function fetchScanDetails(url) {
+		var formData = new URLSearchParams({
+			'website': btoa(url)
+		});
+
+		return fetch('https://skynetaccessibilityscan.com/api/get-scan-detail', {
+			method: 'POST',
+			body: formData
+		}).then(function(response) {
+			return response.json();
+		}).then(function(result) {
+			var data = result.data[0] || {};
+
+			// Store in global appData
+			appData.domain = data.domain || '';
+			appData.favIcon = data.fav_icon || '';
+			appData.urlScanStatus = data.url_scan_status || 0;
+			appData.scanStatus = data.scan_status || 0;
+			appData.totalSelectedPages = data.total_selected_pages || 0;
+			appData.totalLastScanPages = data.total_last_scan_pages || 0;
+			appData.totalPages = data.total_pages || 0;
+			appData.lastUrlScan = data.last_url_scan || 0;
+			appData.totalScanPages = data.total_scan_pages || 0;
+			appData.lastScan = data.last_scan || null;
+			appData.nextScanDate = data.next_scan_date || null;
+			appData.successPercentage = data.success_percentage || '0';
+			appData.scanViolationTotal = data.scan_violation_total || '0';
+			appData.totalViolations = data.total_violations || 0;
+			appData.packageName = data.name || '';
+			appData.packageId = data.package_id || '';
+			appData.pageViews = data.page_views || '';
+			appData.packagePrice = data.package_price || '';
+			appData.subscrInterval = data.subscr_interval || '';
+			appData.endDate = data.end_date || '';
+			appData.cancelDate = data.cancel_date || '';
+			appData.websiteId = data.website_id || '';
+			appData.paypalSubscrId = data.paypal_subscr_id || '';
+			appData.isTrialPeriod = data.is_trial_period || '';
+			appData.dashboardLink = result.dashboard_link || '';
+			appData.totalFailSum = data.total_fail_sum || '';
+			appData.isExpired = data.is_expired || '';
+		});
+	}
+
+	// Fetch scan count
+	function fetchScanCount(url) {
+		var formData = new URLSearchParams({
+			'website': btoa(url)
+		});
+
+		return fetch('https://skynetaccessibilityscan.com/api/get-scan-count', {
+			method: 'POST',
+			body: formData
+		}).then(function(response) {
+			return response.json();
+		}).then(function(result) {
+			console.log('RAW get-scan-count response:', result);
+			var widgetPurchased = result.widget_purchased || false;
+
+			appData.scanDetails = {
+				withRemediation: widgetPurchased ? (result.scan_details.with_remediation || {}) : (result.scan_details.without_remediation || {})
+			};
+			console.log(
+				'Parsed scanDetails:',
+				appData.scanDetails.withRemediation
+			);
+		});
+	}
+
+	// Fetch packages
+	function fetchPackages(url) {
+		return fetch('https://skynetaccessibilityscan.com/api/packages-list', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({
+				'website': btoa(url)
+			})
+		}).then(function(response) {
+			return response.json();
+		}).then(function(decoded) {
+			var packageData = {};
+			if (decoded.current_active_package && decoded.current_active_package[appData.websiteId]) {
+				packageData = decoded.current_active_package[appData.websiteId];
+			} else if (decoded.expired_package_detail && decoded.expired_package_detail[appData.websiteId]) {
+				packageData = decoded.expired_package_detail[appData.websiteId];
+			}
+
+			appData.finalPrice = packageData.final_price || 0;
+			appData.packageId = packageData.package_id || appData.packageId;
+			appData.subscrInterval = packageData.subscr_interval || appData.subscrInterval;
+
+			// Generate violation link
+			return fetch('https://skynetaccessibilityscan.com/api/generate-plan-action-link', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/x-www-form-urlencoded'
+				},
+				body: new URLSearchParams({
+					'website_id': appData.websiteId,
+					'current_package_id': appData.packageId,
+					'action': 'violation'
+				})
+			}).then(function(response) {
+				return response.json();
+			}).then(function(violationData) {
+				appData.violationLink = violationData.action_link || '#';
+
+				// Process plans
+				appData.plans = [];
+				var today = new Date();
+
+				var plans = decoded.Data || [];
+				for (var i = 0; i < plans.length; i++) {
+					var plan = plans[i];
+					if (!plan.platforms || plan.platforms.toLowerCase() !== 'scanner') continue;
+
+					var planId = plan.id;
+					if (!planId) continue;
+
+					var action = 'upgrade';
+					if (planId == appData.packageId) {
+						plan.interval = appData.subscrInterval;
+						if (appData.endDate) {
+							var endDate = new Date(appData.endDate);
+							action = (today <= endDate) ? 'cancel' : 'upgrade';
+						} else {
+							action = 'cancel';
+						}
+					}
+
+					plan.action = action;
+					appData.plans.push(plan);
+				}
+			});
+		});
+	}
+
+	// Render UI with fetched data
+	function renderUI() {
+		renderScanScore();
+		renderLastScanned();
+		renderPlanInfo();
+		renderPlans();
+		renderViolationReport();
+	}
+
+	// Render scan score
+	function renderScanScore() {
+		var scanScoreElement = document.getElementById('scan-score');
+
+		if (appData.isExpired == 1) {
+			scanScoreElement.innerHTML = '<span class="status-value status-inactive">N/A</span>';
+		} else if (appData.scanViolationTotal == 0) {
+			scanScoreElement.innerHTML = '<span class="status-value status-inactive">N/A</span>';
+		} else {
+			scanScoreElement.innerHTML = appData.successPercentage + '%' +
+				'<div class="progress-bar">' +
+				'<div class="progress-fill" style="width: ' + appData.successPercentage + '%;"></div>' +
+				'</div>' +
+				'<div class="violations">' +
+				'Violations: <span class="status-value" style="font-size: 15px;">' + appData.totalFailSum + '</span>' +
+				'</div>';
+		}
+	}
+
+	// Render last scanned
+	function renderLastScanned() {
+		var lastScannedElement = document.getElementById('last-scanned');
+
+		if (appData.urlScanStatus < 2 || appData.scanStatus == 0) {
+			lastScannedElement.innerHTML = '<img src="Resources/Public/Images/not-shared.svg" alt="" title="Not Started">Not Started';
+			lastScannedElement.className = 'status-value status-inactive';
+		} else if (appData.scanStatus == 1 || appData.scanStatus == 2) {
+			lastScannedElement.innerHTML = '<img src="Resources/Public/Images/not-shared.svg" alt="" title="Scanning in process">Scanning<br>' +
+				appData.totalScanPages + '/' + appData.totalSelectedPages;
+			lastScannedElement.className = 'status-value status-inactive';
+		} else if (appData.scanStatus == 3) {
+			var formattedDate = '';
+			if (appData.lastScan) {
+				var date = new Date(appData.lastScan);
+				formattedDate = date.toLocaleDateString('en-US', {
+					year: 'numeric',
+					month: 'long',
+					day: 'numeric'
+				});
+			}
+
+			lastScannedElement.innerHTML = appData.totalScanPages + ' Pages<br>' + formattedDate;
+			lastScannedElement.className = 'status-value status-active';
+		}
+	}
+
+	// Render plan info
+	function renderPlanInfo() {
+		var planNameElement = document.getElementById('plan-name');
+		var planPagesElement = document.getElementById('plan-pages');
+		var planBadgeElement = document.getElementById('plan-badge');
+		var planRenewalElement = document.getElementById('plan-renewal');
+		var cancelBtnElement = document.getElementById('cancel-subscription-btn');
+
+		// Plan name
+		if (appData.isExpired) {
+			planNameElement.innerHTML = '<span style="color: #9F0000; font-weight: 700;">Your Plan has Expired</span>';
+		} else {
+			planNameElement.textContent = appData.isTrialPeriod == 1 ? 'Free Plan' : appData.packageName + ' Plan';
+		}
+
+		// Plan pages
+		if (!appData.isExpired) {
+			planPagesElement.textContent = 'Scan up to ' + appData.pageViews + ' Pages';
+		} else {
+			planPagesElement.textContent = '';
+		}
+
+		// Plan badge
+		var today = new Date().toISOString().split('T')[0];
+		var cancelDate = appData.cancelDate ? appData.cancelDate.substring(0, 10) : '';
+		var isCancelled = (cancelDate && cancelDate <= today) || appData.isExpired;
+
+		if (appData.isExpired) {
+			planBadgeElement.style.display = 'none';
+		} else {
+			planBadgeElement.style.color = isCancelled ? '#940000' : 'green';
+			planBadgeElement.style.background = isCancelled ? '#ffd1d1' : '#D1FFD3';
+			planBadgeElement.textContent = isCancelled ? 'Cancelled Plan' : 'Current Plan';
+		}
+
+		// Plan renewal
+		if (!appData.isExpired && appData.endDate) {
+			var endDate = new Date(appData.endDate);
+			var formattedDate = endDate.toLocaleDateString('en-US', {
+				year: 'numeric',
+				month: 'long',
+				day: 'numeric'
+			});
+
+			if (isCancelled) {
+				planRenewalElement.innerHTML = 'Expires on: <strong>' + formattedDate + '</strong>';
+			} else {
+				planRenewalElement.innerHTML = 'Renews on: <strong>' + formattedDate + '</strong>';
+			}
+		} else if (appData.isExpired && appData.endDate) {
+			var endDate = new Date(appData.endDate);
+			var formattedDate = endDate.toLocaleDateString('en-US', {
+				year: 'numeric',
+				month: 'long',
+				day: 'numeric'
+			});
+			planRenewalElement.innerHTML = 'Expired on: <strong>' + formattedDate + '</strong>';
+		}
+
+		// Cancel/Renew button
+		var showRenew = (cancelDate <= today) || appData.isExpired;
+		if (showRenew) {
+			cancelBtnElement.style.backgroundColor = '#420083';
+			cancelBtnElement.style.color = '#fff';
+			cancelBtnElement.textContent = 'Renew Plan';
+		} else {
+			cancelBtnElement.style.backgroundColor = '';
+			cancelBtnElement.style.color = '';
+			cancelBtnElement.textContent = 'Cancel Subscription';
+		}
+	}
+
+	// Render plans
+	function renderPlans() {
+		var monthlyPlansContainer = document.getElementById('monthly-plans');
+		var annualPlansContainer = document.getElementById('annual-plans');
+
+		var icons = ['diamond.svg', 'pentagon.svg', 'hexagon.svg', 'hexagon.svg'];
+
+		monthlyPlansContainer.innerHTML = '';
+		annualPlansContainer.innerHTML = '';
+
+		for (var i = 0; i < appData.plans.length; i++) {
+			var plan = appData.plans[i];
+			var icon = icons[i] || 'default.svg';
+
+			// Monthly plan card
+			var isExpired = appData.endDate && (new Date(appData.endDate) < new Date());
+			var isCurrentMonthly = appData.packageId == plan.id && plan.interval == 'M';
+			var monthlyAction = isExpired ? 'upgrade' : (isCurrentMonthly ? 'cancel' : 'upgrade');
+			var monthlyButtonClass = (!isExpired && isCurrentMonthly) ? 'upgrade-btn cancel-btnn' : 'upgrade-btn';
+
+			var monthlyCard = '<div class="tier" data-plan-id="' + plan.id + '">' +
+				'<div class="pricing-top">' +
+				'<div class="pricing-header">' +
+				'<div class="icon-circle">' +
+				'<img src="Resources/Public/Images/' + icon + '" alt="" height="20" width="20">' +
+				'</div>' +
+				'</div>' +
+				'<div class="pricing-info">' +
+				'<h3 class="tier-title">' + plan.name + '</h3>' +
+				'<p class="tier-pages">' + plan.page_views + ' Pages</p>' +
+				'</div>' +
+				'</div>' +
+				'<hr class="pricing-divider">' +
+				'<div class="pricing-body">' +
+				'<p class="old-price">$' + plan.strick_monthly_price + '</p>' +
+				'<p class="new-price">$' + plan.monthly_price + '<span class="per-year">/Monthly</span></p>' +
+				'</div>' +
+				'<button class="' + monthlyButtonClass + '" data-action="' + monthlyAction + '" onclick="handleUpgradeClick(\'' + plan.id + '\', \'' + monthlyAction + '\', \'M\')">' +
+				(isExpired ? 'Upgrade' : (isCurrentMonthly ? 'Cancel' : 'Upgrade')) +
+				'</button>' +
+				'</div>';
+
+			// Annual plan card
+			var isCurrentAnnual = appData.packageId == plan.id && plan.interval == 'Y';
+			var annualAction = isExpired ? 'upgrade' : (isCurrentAnnual ? 'cancel' : 'upgrade');
+			var annualButtonClass = (!isExpired && isCurrentAnnual) ? 'upgrade-btn cancel-btnn' : 'upgrade-btn';
+
+			var annualCard = '<div class="tier" data-plan-id="' + plan.id + '">' +
+				'<div class="pricing-top">' +
+				'<div class="pricing-header">' +
+				'<div class="icon-circle">' +
+				'<img src="Resources/Public/Images/' + icon + '" alt="" height="20" width="20">' +
+				'</div>' +
+				'</div>' +
+				'<div class="pricing-info">' +
+				'<h3 class="tier-title">' + plan.name + '</h3>' +
+				'<p class="tier-pages">' + plan.page_views + ' Pages</p>' +
+				'</div>' +
+				'</div>' +
+				'<hr class="pricing-divider">' +
+				'<div class="pricing-body">' +
+				'<p class="old-price">$' + plan.strick_price + '</p>' +
+				'<p class="new-price">$' + plan.price + '<span class="per-year">/Year</span></p>' +
+				'</div>' +
+				'<button class="' + annualButtonClass + '" data-action="' + annualAction + '" onclick="handleUpgradeClick(\'' + plan.id + '\', \'' + annualAction + '\', \'Y\')">' +
+				(isExpired ? 'Upgrade' : (isCurrentAnnual ? 'Cancel' : 'Upgrade')) +
+				'</button>' +
+				'</div>';
+
+			monthlyPlansContainer.innerHTML += monthlyCard;
+			annualPlansContainer.innerHTML += annualCard;
+		}
+	}
+
+	// Render violation report
+	function renderViolationReport() {
+		// Report date
+		if (appData.lastScan) {
+			var reportDate = new Date(appData.lastScan);
+			var formattedDate = reportDate.toLocaleDateString('en-US', {
+				day: 'numeric',
+				month: 'long',
+				year: 'numeric'
+			});
+			document.getElementById('report-date-value').textContent = formattedDate;
+		}
+
+		// Accessibility score
+		document.getElementById('accessibility-score').textContent = appData.successPercentage + '%';
+		document.getElementById('accessibility-progress').style.width = appData.successPercentage + '%';
+
+		// Compliance status
+		var percentage = parseInt(appData.successPercentage);
+		var statusClass = '';
+		var statusText = '';
+
+		if (percentage >= 0 && percentage < 50) {
+			statusClass = 'not-compliant';
+			statusText = 'Not Compliant';
+		} else if (percentage >= 50 && percentage < 85) {
+			statusClass = 'semi-compliant';
+			statusText = 'Semi Compliant';
+		} else if (percentage >= 85) {
+			statusClass = 'compliant';
+			statusText = 'Compliant';
+		}
+
+		var complianceElement = document.getElementById('compliance-status');
+		complianceElement.className = 'status-text ' + statusClass;
+		complianceElement.textContent = statusText;
+
+		// Pages scanned
+		document.getElementById('pages-scanned').textContent = appData.totalScanPages;
+		var pagesProgress = appData.totalPages > 0 ? (appData.totalScanPages / appData.totalPages * 100) : 0;
+		document.getElementById('pages-progress').style.width = pagesProgress + '%';
+		document.getElementById('pages-note').textContent = appData.totalScanPages + ' pages scanned out of ' + appData.totalPages;
+
+		// WCAG checks
+		var scanDetails = (appData.scanDetails && appData.scanDetails.withRemediation) ? appData.scanDetails.withRemediation : {};
+		document.getElementById('failed-checks').textContent = scanDetails.total_fail || 0;
+		document.getElementById('passed-checks').textContent = scanDetails.total_success || 0;
+		document.getElementById('na-checks').textContent = (scanDetails.severity_counts && scanDetails.severity_counts.Not_Applicable) ? scanDetails.severity_counts.Not_Applicable : 0;
+
+		// Violation levels
+		document.getElementById('level-a-violations').textContent = (scanDetails.criteria_counts && scanDetails.criteria_counts.A) ? scanDetails.criteria_counts.A : 0;
+		document.getElementById('level-aa-violations').textContent = (scanDetails.criteria_counts && scanDetails.criteria_counts.AA) ? scanDetails.criteria_counts.AA : 0;
+		document.getElementById('level-aaa-violations').textContent = (scanDetails.criteria_counts && scanDetails.criteria_counts.AAA) ? scanDetails.criteria_counts.AAA : 0;
+	}
+
+	// Handle upgrade/cancel button clicks
+	function handleUpgradeClick(planId, actionType, interval) {
+		var paypalSubscrId = appData.paypalSubscrId;
+
+		// Force action to 'upgrade' if PayPal subscription ID is null or empty
+		if (!paypalSubscrId || paypalSubscrId === 'null') {
+			actionType = 'upgrade';
+		}
+
+		// Prepare request payload
+		var payload = {
+			website_id: appData.websiteId,
+			current_package_id: appData.packageId,
+			action: actionType
+		};
+
+		// Only include package_id and interval for upgrade
+		if (actionType === 'upgrade') {
+			payload.package_id = planId;
+			payload.interval = interval;
+		}
+
+		var newWindow = window.open('', '_blank');
+
+		fetch('https://skynetaccessibilityscan.com/api/generate-plan-action-link', {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+			body: new URLSearchParams(payload)
+		})
+			.then(function(response) {
+				return response.json();
+			})
+			.then(function(data) {
+				console.log("API Response:", data);
+
+				var redirectUrl = data.action_link || data.url;
+				if (redirectUrl) {
+					newWindow.location.href = redirectUrl;
+				} else {
+					newWindow.close();
+					alert("No link returned from API");
+				}
+			})
+			.catch(function(err) {
+				console.error("API Error:", err);
+				newWindow.close();
+			});
+	}
+
+	// Handle dashboard link
+	function handleDashboardLink() {
+		if (appData.dashboardLink) {
+			window.open(appData.dashboardLink, '_blank');
+		}
+	}
+
+	// Handle violation link
+	function handleViolationLink() {
+		if (appData.violationLink) {
+			window.open(appData.violationLink, '_blank');
+		}
+	}
+
+	// Toggle between monthly and annual plans
+	document.addEventListener('DOMContentLoaded', function () {
+		var toggle = document.getElementById("billing-toggle");
+		var monthlyLabel = document.getElementById("monthly-label");
+		var annualLabel = document.getElementById("annual-label");
+		var monthlyclass = document.getElementById("monthlyclass");
+		var annualclass = document.getElementById("annualclass");
+
+		function showMonthly() {
+			toggle.checked = false;
+			monthlyLabel.classList.add("active");
+			annualLabel.classList.remove("active");
+			monthlyclass.style.display = "block";
+			annualclass.style.display = "none";
+		}
+
+		function showAnnual() {
+			toggle.checked = true;
+			monthlyLabel.classList.remove("active");
+			annualLabel.classList.add("active");
+			monthlyclass.style.display = "none";
+			annualclass.style.display = "block";
+		}
+
+		toggle.addEventListener("change", function() {
+			if (toggle.checked) {
+				showAnnual();
+			} else {
+				showMonthly();
+			}
+		});
+
+		// Initialize the application
+		initializeApp();
+
+		// Set initial state after data is loaded
+		setTimeout(function() {
+			if (appData.subscrInterval === 'Y') {
+				showAnnual();
+			} else {
+				showMonthly();
+			}
+		}, 1000);
+	});
+
+	// Show violation details
+	function showDetails() {
+		document.getElementById("section1").style.display = "none";
+		document.getElementById("section2").style.display = "block";
+	}
+
+	// Go back to main view
+	function goBack() {
+		document.getElementById("section2").style.display = "none";
+		document.getElementById("section1").style.display = "block";
+	}
+</script>
+
+</body>
+</html>

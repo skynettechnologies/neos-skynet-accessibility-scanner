@@ -1,0 +1,11 @@
+privilegeTargets:
+  'Neos\Neos\Security\Authorization\Privilege\ModulePrivilege':
+    'Skynettechnologies.Skynetaccessibilityscanner:SkynetaccessibilityscannerModule':
+      matcher: 'administration/skynetaccessibilityscanner'
+
+roles:
+  'Neos.Neos:Administrator':
+    privileges:
+      -
+        privilegeTarget: 'Skynettechnologies.Skynetaccessibilityscanner:SkynetaccessibilityscannerModule'
+        permission: GRANT

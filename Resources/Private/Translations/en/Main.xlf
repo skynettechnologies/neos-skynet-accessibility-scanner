@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xlifNeos.Fusion:document:1.2">
+	<file original="" product-name="Skynettechnologies.Skynetaccessibilityscanner" source-language="en" datatype="plaintext">
+		<body>
+			<trans-unit id="consentSettingsButton" xml:space="preserve">
+				<source>Privacy settings</source>
+			</trans-unit>
+            <trans-unit id="noConsentPlaceholder.contentBlocked" xml:space="preserve">
+				<source>content is currently not displayed for data privacy reasons.</source>
+			</trans-unit>
+            <trans-unit id="noConsentPlaceholder.consentButton" xml:space="preserve">
+				<source>Allow content of this type</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

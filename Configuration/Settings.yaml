@@ -1,0 +1,31 @@
+Neos:
+  Flow:
+    resource:
+      targets:
+        localWebDirectoryStaticResourcesTarget:
+          targetClass: Neos\Flow\ResourceManagement\Target\FileSystemTarget
+  Neos:
+    fusion:
+      autoInclude:
+        'Skynettechnologies.Skynetaccessibilityscanner': true
+    modules:
+      administration:
+        submodules:
+          skynetaccessibilityscanner:
+            label: 'SkynetAccessibility Scanner'
+            controller: 'Skynettechnologies\Skynetaccessibilityscanner\Controller\BackendController'
+            description: 'Scan, monitor, and identify website accessibility issues across WCAG 2.0, 2.1, 2.2, ADA, Section 508, EN 301 549, UK Equality Act, Australian DDA, and Canada ACA. Get simple issue highlights with recommended fixes.'
+            icon: 'fas fa-search-plus'
+
+Skynettechnologies:
+  Skynetaccessibilityscanner:
+    enabled: true
+    autoInclude:
+      config: true
+      scripts: true
+      styles: true
+    enableStickyConsentSettingsButton: true
+    config:
+      privacyPolicy: ''
+      translations: []
+      services: []

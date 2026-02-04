@@ -1,0 +1,7 @@
+-
+  name: 'Skynet Accessibility Admin API'
+  uriPattern: 'api/skynetaccessibilityscanner/admin-info'
+  defaults:
+    '@package': 'Skynettechnologies.Skynetaccessibilityscanner'
+    '@controller': 'AdminApi'
+    '@action': 'info'

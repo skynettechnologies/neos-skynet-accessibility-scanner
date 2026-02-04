@@ -1,0 +1,37 @@
+{
+    "name": "skynettechnologies/neos-skynet-accessibility-scanner",
+    "type": "neos-plugin",
+    "description": "Scan, monitor, and identify website accessibility issues across WCAG 2.0, 2.1, 2.2, ADA, Section 508, EN 301 549, UK Equality Act, Australian DDA, and Canada ACA. Get simple issue highlights with recommended fixes.",
+    "keywords": [
+        "neos-cms",
+        "framework",
+        "accessibility",
+        "wcag",
+        "scanner"
+    ],
+    "license": "MIT",
+    "require": {
+        "neos/neos": "^9.0"
+    },
+    "extra": {
+        "neos": {
+            "package-key": "Skynettechnologies.Skynetaccessibilityscanner"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Skynettechnologies\\Skynetaccessibilityscanner\\": "Classes/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Rajesh Bhimani",
+            "email": "developer3@skynettechnologies.com",
+            "role": "Developer",
+            "homepage": "https://skynettechnologies.com"
+        }
+    ],
+    "support": {
+        "email": "hello@skynettechnologies.com"
+    }
+}

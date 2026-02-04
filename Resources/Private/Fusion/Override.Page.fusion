@@ -1,0 +1,45 @@
+prototype(Neos.Neos:Page) {
+    head.javascripts {
+        noConsentPlaceholder = Neos.Fusion:Tag {
+            @if.enabled = ${Configuration.setting('Skynettechnologies.Skynetaccessibilityscanner.enabled')}
+            @if.autoIncludeScripts = ${Configuration.setting('Skynettechnologies.Skynetaccessibilityscanner.autoInclude.scripts')}
+            tagName = 'script'
+            attributes {
+                defer = true
+                type = 'application/javascript'
+                src = Neos.Fusion:ResourceUri {
+                    path = 'resource://Skynettechnologies.Skynetaccessibilityscanner/Public/JavaScript/aioa.js'
+                }
+                data-never-block = ''
+            }
+        }
+    }
+    body {
+        javascripts.skynettechnologiesSkynetaccessibilityscanner = Neos.Fusion:Array {
+            @if.enabled = ${Configuration.setting('Skynettechnologies.Skynetaccessibilityscanner.enabled')}
+            @position = 'end 99999'
+            config = Skynettechnologies.Skynetaccessibilityscanner:Klaro.Config
+            config.@if.autoIncludeConfig = ${Configuration.setting('Skynettechnologies.Skynetaccessibilityscanner.autoInclude.config')}
+            noBundle = Neos.Fusion:Tag {
+                @if.autoIncludeScripts = ${Configuration.setting('Skynettechnologies.Skynetaccessibilityscanner.autoInclude.scripts')}
+                tagName = 'script'
+                attributes {
+                    defer = true
+                    src = Neos.Fusion:ResourceUri {
+                        path = 'resource://Skynettechnologies.Skynetaccessibilityscanner/Public/JavaScript/aioa.js'
+                    }
+                }
+            }
+        }
+        skynettechnologiesSkynetaccessibilityscannerSettingsButton = Skynettechnologies.Skynetaccessibilityscanner:Component.Atom.SkynetaccessibilityscannerSettingsButton
+        @process.appendSkynettechnologiesSkynetaccessibilityscannerSettingsButton = ${value + this.skynettechnologiesSkynetaccessibilityscannerSettingsButton}
+        @process.appendSkynettechnologiesSkynetaccessibilityscannerSettingsButton.@if.enabled = ${Configuration.setting('Skynettechnologies.Skynetaccessibilityscanner.enableStickySkynetaccessibilityscannerSettingsButton')}
+    }
+    head.debugEu = Neos.Fusion:Tag {
+        tagName = 'meta'
+        attributes {
+            name = 'aioa-eu-mode'
+            content = ${Aioa.isEuRequired() ? 'EU' : 'GLOBAL'}
+        }
+    }
+}
